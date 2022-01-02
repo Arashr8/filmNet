@@ -1,0 +1,23 @@
+.slider{
+    height: 500px;
+}
+
+
+
+.img_slider{
+    position: absolute;
+    width: 100%;
+}
+
+.text_img_slider{
+    position: absolute;
+    right: 80px;
+    bottom: 100px;
+    color: white !important;
+}
+
+
+/* tol o arz 
+overflow hidden 
+axa width 100 darsad  */
+

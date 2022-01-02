@@ -1,6 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
+import '../styles/global.css'
 
 //swiper
 import 'swiper/scss';
