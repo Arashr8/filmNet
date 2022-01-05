@@ -6,6 +6,9 @@ import Link from 'next/link'
 
 
 const Layout = ({children}) => {
+
+  const router = useRouter()
+
     return(
         <div> 
 <Navbar bg="dark" variant="dark">
@@ -13,8 +16,8 @@ const Layout = ({children}) => {
     <Navbar.Brand href="#home"> <img src={"./filimo1.jpg"} /> FilmNet </Navbar.Brand>
     <Divider style={{backgroundColor:"white !important"}} type="vertical"/>
     <Nav className="me-auto">
-    <Nav.Link href="#home"> Home </Nav.Link>
-      <Nav.Link href="#films"> Film </Nav.Link>
+      <Link href={"/"}><Nav.Link active={router.pathname === "/"} href="#home"> Home </Nav.Link></Link>
+      <Link href={"/films"}><Nav.Link href="#films"> Film </Nav.Link></Link>
       <Nav.Link href="#features"> Serier </Nav.Link>
       <Nav.Link href="#pricing"> Barn </Nav.Link>
     </Nav>

@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-const FilmsLiastPage = () => {
+const FilmsListPage = () => {
     return ( 
         <div> film list page </div>
      );
 }
  
-export default FilmsLiastPa
+export default FilmsListPage
