@@ -1,6 +1,7 @@
 import {Divider} from "antd";
 import React from 'react';
-import {Nav , Navbar} from 'react-bootstrap';
+import {Button , Nav , Navbar} from 'react-bootstrap';
+import styles from './layout.module.css';
 import {useRouter} from 'next/router'
 import Link from 'next/link'
 
@@ -21,7 +22,7 @@ const Layout = ({children}) => {
       <Nav.Link href="#features"> Serier </Nav.Link>
       <Nav.Link href="#pricing"> Barn </Nav.Link>
     </Nav>
-    
+    <button className={styles.auth_btn}>Logga in</button>
   </Navbar>
 
             <div> {children} </div>
