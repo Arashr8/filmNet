@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Headerslider from '../components/slider';
+import FilmSlider from '../components/film-slider'
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <div>
         <Headerslider />
+        <FilmSlider />
       </div>
 
     </div>
