@@ -6,7 +6,7 @@ import styles from './film-slider.module.css';
 const FilmSlider = () => {
     return (
         
-        <div className="mt-5 mb-5">
+        <div>
       <Swiper
       freeMode={true}
       slidesPerView={8}

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import {Divider} from 'antd'
 import Headerslider from '../components/slider';
 import FilmSlider from '../components/film-slider'
 
@@ -14,6 +14,11 @@ export default function Home() {
       </Head>
       <div>
         <Headerslider />
+        <Divider orientation="left">Top Films</Divider>
+        <FilmSlider />
+        <Divider orientation="left">Trending on Google</Divider>
+        <FilmSlider />
+        <Divider orientation="left">New movies</Divider>
         <FilmSlider />
       </div>
 
