@@ -14,7 +14,7 @@ const Layout = ({children}) => {
         <div> 
 <Navbar bg="dark" variant="dark">
    
-    <Navbar.Brand href="#home"> <img src={"./filimo1.jpg"} /> FilmNet </Navbar.Brand>
+    <Navbar.Brand href="#home"> <img src={"./filimo1.jpg"} alt="filimo.jpg" /> FilmNet </Navbar.Brand>
     <Divider style={{backgroundColor:"white !important"}} type="vertical"/>
     <Nav className="me-auto">
       <Link href={"/"}><Nav.Link active={router.pathname === "/"} href="#home"> Home </Nav.Link></Link>

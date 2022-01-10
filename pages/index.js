@@ -14,11 +14,11 @@ export default function Home() {
       </Head>
       <div>
         <Headerslider />
-        <Divider orientation="left">Top Films</Divider>
+        <Divider orientation="left"> <h5>Top Films</h5></Divider>
         <FilmSlider />
-        <Divider orientation="left">Trending on Google</Divider>
+        <Divider orientation="left"> <h5>Trending on Google</h5></Divider>
         <FilmSlider />
-        <Divider orientation="left">New movies</Divider>
+        <Divider orientation="left"><h5>New movies</h5></Divider>
         <FilmSlider />
       </div>
 
