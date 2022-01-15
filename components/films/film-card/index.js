@@ -5,12 +5,14 @@ import Link from 'next/link'
 
 const FilmCard = () => {
     return ( 
-        <div>
+        <div className="text-center">
             <Link href={"/films/[slug]"} as={"/films/film1"}>
-            <Card>
-                <Card.Img src={"/assets/films/film1.jpg"} />
+                <div className={styles.card_font_hover}>
+            <Card className={styles.card}>
+                <Card.Img className={styles.img_shadows} src={"/assets/films/film1.jpg"} alt="image 1" />
+                <p>Names movie</p>
             </Card>
-
+            </div>
             </Link>
         </div>
      );

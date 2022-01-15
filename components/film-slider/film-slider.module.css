@@ -1,3 +1,15 @@
+.card{
+    border: 0;
+}
 .card :hover{
     cursor: pointer;
+    
 };
+.card_font_hover:hover{
+    font-size: larger;
+    cursor: pointer;
+   }
+   
+.img_shadows:hover{
+   box-shadow: 5px -5px black;
+   }
