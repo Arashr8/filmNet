@@ -29,7 +29,7 @@ const Layout = ({children , customize}) => {
     <Nav.Link href="#features"> Serier </Nav.Link>
     <Nav.Link href="#pricing"> Barn </Nav.Link>
   </Nav>
-  <button className={styles.auth_btn}>Logga in</button>
+  <Link href="/auth"><button className={styles.auth_btn}>Logga in</button></Link>
   </Navbar>
 
         <div> {children} </div>

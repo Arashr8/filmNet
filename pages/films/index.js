@@ -1,9 +1,9 @@
-import React from 'react'
-
+import React from 'react';
+import FilmCard from '../../components/films/film-card';
 
 const FilmsListPage = () => {
     return ( 
-        <div> film list page </div>
+        <FilmCard />
      );
 }
  

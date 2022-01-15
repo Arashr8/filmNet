@@ -10,14 +10,15 @@ const layout = {
 
   const tailLayout = {
     wrapperCol: {
-        offset: 4,
+        offset: 10,
          span: 20, 
     },
   };
-const LoginForm = () => {
+const LoginForm = ({setStatus}) => {
     return ( 
         
             <Form
+            name="login"
             {...layout}
             onFinish={(value) => {
                 console.log(value)
@@ -45,7 +46,14 @@ const LoginForm = () => {
                 
                 <Form.Item {...tailLayout} className="mt-3">
                 <Button type="primary" htmlType="submit">Submit</Button>
+                <br/>
+                 
+                <Button onClick={()=>setStatus(true)} className="mt-3" type="link">
+                    Create account
+                    </Button>
                 </Form.Item>
+
+                
             </Form>
            
      );
