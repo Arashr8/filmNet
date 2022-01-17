@@ -1,13 +1,15 @@
 
 import { Menu, Dropdown, Slider, Divider } from 'antd';
 import React, { useRef, useState } from "react";
-import { Card, ProgressBar } from "react-bootstrap";
+import { Button, Card, ProgressBar } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import styles from "./video-player.module.css";
 import classnames from "classnames";
+import { useRouter } from "next/router"
 
 
 const VideoPlayer = () => {
+  const router = useRouter();
   const [playing, setPlaying] = useState(false);
   const [show, setShow] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -54,6 +56,14 @@ const VideoPlayer = () => {
 
   return (
     <div>
+      <Button
+        className={styles.return_btn}
+        variant="dark"
+        onClick={() => {
+          router.back();
+        }}
+      >
+        Back to home</Button>
       <ReactPlayer
         ref={ref}
         className={styles.player}

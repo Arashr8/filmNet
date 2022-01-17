@@ -11,13 +11,13 @@
 
 .text_img_slider{
     position: absolute;
-    right: 80px;
+    margin-bottom: 100px;
+    margin-left: 20px;
     bottom: 100px;
     color: white !important;
 }
 
-
-/* tol o arz 
-overflow hidden 
-axa width 100 darsad  */
+.white_text{
+    color: white !important;
+}
 

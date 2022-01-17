@@ -41,4 +41,23 @@
 .active_menu{
     background-color:rgb(89, 89, 245)
 }
+.return_btn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    opacity: 0;
 
+}
+.return_btn:hover {
+    opacity: 1;
+    animation: returnBtnAnimation 0.5s ease-in;
+  }
+  @keyframes returnBtnAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

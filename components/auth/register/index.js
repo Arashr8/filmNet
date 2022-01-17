@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './register.module.css'
 import {Button, Form, Input } from 'antd';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const layout = {
@@ -15,18 +17,33 @@ const layout = {
     },
   };
 
-const RegisterForm = ({setStatus}) => {
-    return ( 
-        <Form
+  const RegisterForm = ({ setStatus }) => {
+    return (
+      <Form
         name="register"
         {...layout}
         onFinish={(value) => {
-            console.log(value)
+          console.log(value);
+          if (value.password === value.re_password) {
+            const { username, password, email } = value;
+            const values = { username, password, email };
+            axios
+              .post("/api/user", values)
+              .then((res) => {
+                console.log(res);
+                toast.success("  registration was successful!");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else {
+            toast.error("Repeat password is wrong");
+          }
         }}
-        onFinisgFaild={error => {
-            console.log(error)
+        onFinishFailed={(err) => {
+          console.log(err);
         }}
-        >
+      >
             <Form.Item className="m-4"
             label="Your name"
             name="username"
@@ -55,7 +72,7 @@ const RegisterForm = ({setStatus}) => {
 
             <Form.Item className="m-4"
             label="Confirm pass"
-            name="password"
+            name="re_password"
             rules={[{required:true },
             {min:6}]}
             >

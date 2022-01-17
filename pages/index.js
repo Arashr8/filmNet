@@ -2,9 +2,12 @@ import Head from 'next/head'
 import {Divider} from 'antd'
 import Headerslider from '../components/slider';
 import FilmSlider from '../components/film-slider'
+import FilmPoster from '../components/film-poster'
+;
 
 
-export default function Home() {
+export default function Home() {  
+
   return (
     <div>
       <Head>
@@ -17,11 +20,21 @@ export default function Home() {
         <Divider orientation="left"> <h5>Top Films</h5></Divider>
         <FilmSlider />
         <Divider orientation="left"> <h5>Trending on Google</h5></Divider>
-        <FilmSlider />
+        <FilmSlider dark/>
+        <FilmPoster />
         <Divider orientation="left"><h5>New movies</h5></Divider>
         <FilmSlider />
       </div>
-
     </div>
   )
 }
+
+export async function getServerSideProps(context) {
+
+  return {
+    props: {
+      
+    },
+  };
+}
+
