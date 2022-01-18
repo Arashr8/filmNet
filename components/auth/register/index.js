@@ -37,7 +37,13 @@ const tailLayout = {
                 toast.success("registration was successful!");
               })
               .catch((err) => {
-                console.log(err);
+                if(err.response){
+            
+                  toast.error(err.response.data.error)
+                }else{
+                  toast.error("Something went wrong!")
+                }
+                
               });
           } else {
             toast.error("Repeat password is wrong");

@@ -8,6 +8,10 @@ export default async(req, res) => {
   const {username , password , email} = req.body
 
   const data = await CreateUser({username , password , email})
-
-  res.status(200).json(data)
+  if(data.status === "SUCCESS"){
+    res.status(200).json(data)
+    
+  }else if(data.status === "ERROR"){
+    res.status(400).json(data)
+  }
 }

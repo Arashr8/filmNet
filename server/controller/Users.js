@@ -2,10 +2,10 @@ const { hashPassword } = require("../middleware/authentication");
 const User = require("../model/user");
 
 const CreateUser = async ({ username, password, email }) => {
-  const checkExistingUser = User.find({ username });
-
+  const checkExistingUser = await User.find({ username });
+    
   if (checkExistingUser.length > 0) {
-    return { error: "Invalid username!", status: "ERROR" };
+    return { error: "Username is already in use!", status: "ERROR" };
   } else {
     const newPassword = await hashPassword(password)
 
@@ -13,7 +13,7 @@ const CreateUser = async ({ username, password, email }) => {
 
     try {
       const user = await User.create(values);
-      return user;
+      return {data:user , status:"SUCCESS"};
     } catch (err) {
       throw err;
     }
