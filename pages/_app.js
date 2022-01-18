@@ -14,12 +14,12 @@ import { ToastContainer } from 'react-toastify';
 
 
 function MyApp({ Component, pageProps }) {
-  return ( 
+  return (
     <Layout customize={pageProps.customize}>
-    <ToastContainer />
-  <Component {...pageProps} />
-  </Layout>
-  )
+      <ToastContainer />
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
-export default MyApp
+export default MyApp;

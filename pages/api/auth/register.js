@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { CreateUser } from "../../server/controller/Users"
+import { CreateUser } from "../../../server/controller/Users"
 
 export default async(req, res) => {
 

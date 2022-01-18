@@ -31,10 +31,10 @@ const tailLayout = {
             const { username, password, email } = value;
             const values = { username, password, email };
             axios
-              .post("/api/user", values)
+              .post("/api/auth/register", values)
               .then((res) => {
                 console.log(res);
-                toast.success("registration was successful!");
+                toast.success("registration was successful");
               })
               .catch((err) => {
                 if(err.response){
