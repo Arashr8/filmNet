@@ -6,20 +6,23 @@ import { toast } from 'react-toastify';
 
 
 const layout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 20 },
-  };
-
-  const tailLayout = {
-    wrapperCol: {
-        offset: 10,
-         span: 20, 
-    },
-  };
+  labelCol: {
+    span: 0,
+  },
+  wrapperCol: {
+    span: 24,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    span: 24,
+  },
+};
 
   const RegisterForm = ({ setStatus }) => {
     return (
       <Form
+        layout="vertical"
         name="register"
         {...layout}
         onFinish={(value) => {
@@ -31,7 +34,7 @@ const layout = {
               .post("/api/user", values)
               .then((res) => {
                 console.log(res);
-                toast.success("  registration was successful!");
+                toast.success("registration was successful!");
               })
               .catch((err) => {
                 console.log(err);
@@ -41,10 +44,10 @@ const layout = {
           }
         }}
         onFinishFailed={(err) => {
-          console.log(err);
+          // console.log(err);
         }}
       >
-            <Form.Item className="m-4"
+            <Form.Item 
             label="Your name"
             name="username"
             rules={[{required:true , message: 'Enter your name'}]}
@@ -52,7 +55,7 @@ const layout = {
                 <Input />
             </Form.Item>
 
-            <Form.Item className="m-4"
+            <Form.Item 
             label="Email"
             name="email"
             rules={[{required:true , message:'Wrong or Invalid email address.Please correct and try again.'},
@@ -61,28 +64,31 @@ const layout = {
                 <Input />
             </Form.Item>
 
-            <Form.Item className="m-4"
+            <Form.Item 
             label="Password"
             name="password"
             rules={[{required:true , message:'Please input your password!'},
             {min:6 , message:"Minimum 6 characters required"}]}
             >
-                <Input />
+                <Input.Password />
             </Form.Item>
 
-            <Form.Item className="m-4"
-            label="Confirm pass"
+            <Form.Item 
+            label="Confirm Password"
             name="re_password"
             rules={[{required:true },
-            {min:6}]}
+            {min:6 , message:"Minimum 6 characters required"}]}
             >
-                <Input />
+                <Input.Password />
             </Form.Item>
             
-            <Form.Item {...tailLayout} className="mt-3">
-            <Button type="primary" htmlType="submit">Create Account</Button>
-           
-            </Form.Item>
+            <Form.Item {...tailLayout} className="text-center ">
+        <Button className={styles.submit_btn} htmlType="submit">
+          {" "}
+         Register{" "}
+        </Button>
+        
+      </Form.Item>
 
             
         </Form>

@@ -4,20 +4,24 @@ import styles from './login.module.css';
 
 
 const layout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 20 },
-  };
-
-  const tailLayout = {
+    labelCol: {
+      span: 0,
+    },
     wrapperCol: {
-        offset: 10,
-         span: 20, 
+      span: 24,
     },
   };
+  const tailLayout = {
+    wrapperCol: {
+      span: 24,
+    },
+  };
+  
 const LoginForm = ({setStatus}) => {
     return ( 
         
             <Form
+            layout="vertical"
             name="login"
             {...layout}
             onFinish={(value) => {
@@ -45,12 +49,14 @@ const LoginForm = ({setStatus}) => {
                 </Form.Item>
                 
                 <Form.Item {...tailLayout} className="mt-3">
-                <Button type="primary" htmlType="submit">Submit</Button>
-                <br/>
-                 
-                <Button onClick={()=>setStatus(true)} className="mt-3" type="link">
-                    Create account
-                    </Button>
+                <Button className={styles.submit_btn} htmlType="submit">
+                 {" "}
+                 Submit{" "}
+        </Button>
+        <br />
+        <Button onClick={()=>setStatus(true)} className="mt-3" type="link">
+          Create account
+        </Button>
                 </Form.Item>
 
                 
