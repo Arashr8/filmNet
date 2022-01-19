@@ -54,9 +54,10 @@ const tailLayout = {
         }}
       >
             <Form.Item 
-            label="Your name"
+            label="Username"
             name="username"
-            rules={[{required:true , message: 'Enter your name'}]}
+            rules={[{required:true , message: 'Enter your username'},
+            { min: 5, message: "Username must be longer than 5 characters!"}]}
             >
                 <Input />
             </Form.Item>

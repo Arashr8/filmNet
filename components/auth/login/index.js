@@ -2,6 +2,7 @@ import { Form, Input, Button } from "antd";
 import React from "react";
 import styles from "./login.module.css";
 import axios from "axios"
+import { toast } from "react-toastify"
 
 const layout = {
   labelCol: {
@@ -26,13 +27,19 @@ const LoginForm = ({ setStatus }) => {
       onFinish={(value) => {
         console.log(value);
         axios.post("/api/auth/login" , value).then(res => {
-          console.log(res)
+          toast.success("You have successfully logged in")
+          console.log(res.data)
         }).catch(err => {
-          console.log(err)
+          if(err.response){
+            
+            toast.error(err.response.data.error)
+          }else{
+            toast.error("Something went wrong!")
+          }
         })
       }}
       onFinishFailed={(err) => {
-        console.log(err);
+        toast.warning("Please enter the required")
       }}
     >
       <Form.Item

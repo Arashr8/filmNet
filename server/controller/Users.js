@@ -1,6 +1,7 @@
 const {
   hashPassword,
   verifyPassword,
+  createToken,
 } = require("../middleware/authentication");
 const User = require("../model/user");
 
@@ -42,10 +43,12 @@ const UserAuthentication = async ({ username, password }) => {
         error: "Username or password is not valid",
         status: "ERROR",
       };
-    }else{
-        const  { email , created} = checkExistingUser
-        const data = {username , email , created}
-        return { data, status: "SUCCESS" };
+    }else {
+      const { email, created } = checkExistingUser;
+      const token = await createToken({ username, password, email, created });
+
+      const user = { username, email, created };
+      return { token, user, status: "SUCCESS" };
     }
   }
 };
