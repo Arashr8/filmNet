@@ -1,8 +1,9 @@
 import { Form, Input, Button } from "antd";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./login.module.css";
-import axios from "axios"
-import { toast } from "react-toastify"
+import axios from "axios";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../../store/auth";
 
 const layout = {
   labelCol: {
@@ -19,29 +20,39 @@ const tailLayout = {
 };
   
 const LoginForm = ({ setStatus }) => {
+  const { setAuthNewState } = useContext(AuthContext);
   return (
     <Form
-      layout="vertical"
-      name="login"
-      {...layout}
-      onFinish={(value) => {
-        console.log(value);
-        axios.post("/api/auth/login" , value).then(res => {
-          toast.success("You have successfully logged in")
-          console.log(res.data)
+    layout="vertical"
+    name="login"
+    {...layout}
+    onFinish={(value) => {
+      console.log(value);
+      axios.post("/api/auth/login", value)
+      .then((res) => {
+          axios.get("/api/auth/user").then(res => {
+           
+            if(res.data.token){
+              setAuthNewState({token:res.data.token})
+              toast.success("You have successfully logged in!");
+
+            }
         }).catch(err => {
-          if(err.response){
-            
-            toast.error(err.response.data.error)
-          }else{
-            toast.error("Something went wrong!")
-          }
+            console.log(err)
         })
-      }}
-      onFinishFailed={(err) => {
-        toast.warning("Please enter the required")
-      }}
-    >
+        })
+        .catch((err) => {
+          if (err.response) {
+            toast.error(err.response.data.error);
+          } else {
+            toast.error("Something went wrong");
+          }
+        });
+    }}
+    onFinishFailed={(err) => {
+      toast.warning("Please enter the required");
+    }}
+  >
       <Form.Item
         label="Username"
         name="username"

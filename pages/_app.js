@@ -11,14 +11,17 @@ import 'swiper/scss/pagination';
 
 import Layout from '../components/layout';
 import { ToastContainer } from 'react-toastify';
+import { AuthProvider } from "../store/auth";
 
 
 function MyApp({ Component, pageProps }) {
   return (
+    <AuthProvider>
     <Layout customize={pageProps.customize}>
       <ToastContainer />
       <Component {...pageProps} />
     </Layout>
+    </AuthProvider>
   );
 }
 

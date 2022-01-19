@@ -1,13 +1,14 @@
 import {Divider} from "antd";
-import React from 'react';
+import React, { useContext } from 'react';
 import {Button , Nav , Navbar} from 'react-bootstrap';
 import styles from './layout.module.css';
 import {useRouter} from 'next/router'
 import Link from 'next/link'
+import { AuthContext } from "../../store/auth";
 
 
 const Layout = ({children , customize}) => {
-
+  const { isAuthenticated, authState } = useContext(AuthContext);
   const router = useRouter()
 
   if(customize){
@@ -26,10 +27,18 @@ const Layout = ({children , customize}) => {
     <Nav className="me-auto">
     <Link href={"/"}><Nav.Link active={router.pathname === "/"} href="#home"> Home </Nav.Link></Link>
     <Link href={"/films"}><Nav.Link href="#films"> Film </Nav.Link></Link>
-    <Nav.Link href="#features"> Serier </Nav.Link>
-    <Nav.Link href="#pricing"> Barn </Nav.Link>
+    <Nav.Link href="#features"> Series </Nav.Link>
+    <Nav.Link href="#pricing"> Kids </Nav.Link>
   </Nav>
-  <Link href="/auth"><button className={styles.auth_btn}>Logga in</button></Link>
+  {isAuthenticated() === false ? (
+            <Link href="/auth">
+              <Button className={styles.auth_btn} variant="light">
+                Logga in
+              </Button>
+            </Link>
+          ) : (
+            <div className={styles.auth_welcome}>Welcome</div>
+          )}
   </Navbar>
 
         <div> {children} </div>
