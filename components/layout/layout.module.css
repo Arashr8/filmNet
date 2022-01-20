@@ -3,8 +3,7 @@
     margin-right: 30px;
 }
 
-.auth_welcome{
-    margin-right: 30px;
-    color: Green;
-    font-size: larger;
+.avatar_menu{
+    width: 150px !important;
+    text-align: center;
 }

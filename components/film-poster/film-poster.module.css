@@ -1,28 +1,19 @@
-.gallery_item {
-  position: relative;
+.text_img_slider {
+  position: absolute;
+  right: 50px;
+  bottom: 10px;
+  color: white !important;
+  font-family: "IRANSans";
+  opacity: 0;
 }
 
-.text_img_slider {
-    position: absolute;
-    right: 50px;
-    bottom: 10px;
-    color: white !important;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: all ease 0.3s;
-  }
-  
-  .white_text {
-    color: white !important;
-  }
-  
-  .banner_hover{
-      filter: brightness(0.2) !important;
-  }
+.white_text {
+  color: white !important;
+}
 
-
-  .gallery_item:hover .text_img_slider{
-    opacity: 1;
-  }
+.banner_hover{
+    filter: brightness(0.2) !important;
+}
+.text_img_slider_hover{
+    opacity: 1 !important;
+}

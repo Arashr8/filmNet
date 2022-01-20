@@ -4,6 +4,7 @@ import styles from "./login.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../store/auth";
+import { useRouter } from "next/router";
 
 const layout = {
   labelCol: {
@@ -20,6 +21,7 @@ const tailLayout = {
 };
   
 const LoginForm = ({ setStatus }) => {
+  const router = useRouter()
   const { setAuthNewState } = useContext(AuthContext);
   return (
     <Form
@@ -35,7 +37,7 @@ const LoginForm = ({ setStatus }) => {
             if(res.data.token){
               setAuthNewState({token:res.data.token})
               toast.success("You have successfully logged in!");
-
+              router.push("/")
             }
         }).catch(err => {
             console.log(err)
