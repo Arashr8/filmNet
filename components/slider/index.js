@@ -29,6 +29,32 @@ const HeaderSlider = () => {
             </Link>
           </div>
         </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            className={styles.img_slider}
+            src={"/assets/slider/slide2.jpg"}
+          />
+          <div className={classnames(styles.text_img_slider, "text-center")}>
+            <h2 className={styles.white_text}>Movie name</h2>
+            <Link href={"/films/[slug]"} as={"/films/film1"} >
+              <Button variant="success">Play</Button>
+            </Link>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            className={styles.img_slider}
+            src={"/assets/slider/slide3.jpg"}
+          />
+          <div className={classnames(styles.text_img_slider, "text-center")}>
+            <h2 className={styles.white_text}>Movie name</h2>
+            <Link href={"/films/[slug]"} as={"/films/film1"} >
+              <Button variant="success">Play</Button>
+            </Link>
+          </div>
+        </SwiperSlide>
         
       </Swiper>
     </div>

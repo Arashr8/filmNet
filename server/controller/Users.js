@@ -17,8 +17,8 @@ const CreateUser = async ({ username, password, email }) => {
 
     try {
       const user = await User.create(values);
-      const  { email , created} = checkExistingUser
-      const data = {username , email , created};
+      const  { email , created, role, sub, sub_time, profilePhoto} = user;
+      const data = {username , email , created, role, sub, sub_time, profilePhoto};
       return { data, status: "SUCCESS" };
     } catch (err) {
       throw err;
@@ -44,16 +44,24 @@ const UserAuthentication = async ({ username, password }) => {
         status: "ERROR",
       };
     }else {
-      const { email, created } = checkExistingUser;
+      const { email, created, role, sub, sub_time, profilePhoto } = checkExistingUser;
       const token = await createToken({ username, password, email, created });
 
-      const user = { username, email, created };
+      const user = { username, email, created, role, sub, sub_time, profilePhoto };
       return { token, user, status: "SUCCESS" };
     }
   }
 };
 
+const getUserData = async({username}) =>{
+  // console.log( username)
+  const checkExistingUser = await User.findOne({ username });
+  const { email, created , role , sub , sub_time , profilePhoto} = checkExistingUser
+  return { username , email, created , role , sub , sub_time , profilePhoto}
+}
+
 module.exports = {
   CreateUser,
   UserAuthentication,
+  getUserData
 };

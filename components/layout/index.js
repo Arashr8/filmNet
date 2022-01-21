@@ -16,7 +16,7 @@ const Layout = ({children , customize}) => {
   const menu = (
     <Menu className={styles.avatar_menu}>
       <Menu.Item key="profile">
-        <Link href={"/user/[id]"}>
+        <Link href={"/user/[id]"} as={`/user/${authState.user?.username}`}>
           <a>profile</a>
         </Link>
       </Menu.Item>
@@ -27,6 +27,7 @@ const Layout = ({children , customize}) => {
           axios
             .get("/api/auth/logout")
             .then((res) => {
+              window.localStorage.removeItem("user")
               setAuthNewState({});
               toast.warning("You are logged out of your account");
             })
@@ -66,7 +67,9 @@ const Layout = ({children , customize}) => {
             </Link>
           ) : (
             <Dropdown overlay={menu}>
-            <Badge dot>
+            <Badge dot
+            status={authState.user?.sub === true ? "success" : "error"}
+            >
               <Avatar src={
                    "https://secure.gravatar.com/avatar/sdfsdfetw?s=164&d=identicon"
                   }>

@@ -6,15 +6,19 @@ const {Provider} = AuthContext
 
 const AuthProvider = ({children}) => {
     const [authState , setAuthState] = useState({})
-
+console.log(authState , "from auth.js")
     useEffect(()=>{
-        axios.get("/api/auth/user").then(res => {
-            console.log(res)
-            if(res.data.token){
-                setAuthState({token:res.data.token})
-
+        axios.get("/api/auth/user")
+            .then((res) => {
+            console.log(res);
+            if (res.data.token) {
+              const user = JSON.parse(window.localStorage.getItem("user"));
+              axios.get(`/api/user/${user.username}`).then((response) => {
+              setAuthState({ token: res.data.token, user: response.data });
+              window.localStorage.setItem("user" , JSON.stringify(response.data))
+              });
             }
-        }).catch(err => {
+          }).catch(err => {
             console.log(err)
         })
     
@@ -33,7 +37,7 @@ const AuthProvider = ({children}) => {
         value={{
             authState,
             isAuthenticated,
-            setAuthNewState : (value) => setAuthState(value)
+            setAuthNewState : (value) => setAuthState(value),
         }}
         >
         {children}
@@ -43,4 +47,4 @@ const AuthProvider = ({children}) => {
 
 export {
     AuthProvider , AuthContext
-}
+};

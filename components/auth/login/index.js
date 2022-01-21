@@ -32,10 +32,10 @@ const LoginForm = ({ setStatus }) => {
       console.log(value);
       axios.post("/api/auth/login", value)
       .then((res) => {
-          axios.get("/api/auth/user").then(res => {
-           
+          axios.post("/api/auth/user" , {user:res.data.user}).then(res => {
+           window.localStorage.setItem("user" , JSON.stringify(res.data.user));
             if(res.data.token){
-              setAuthNewState({token:res.data.token})
+              setAuthNewState({token:res.data.token , user:res.data.user})
               toast.success("You have successfully logged in!");
               router.push("/")
             }
